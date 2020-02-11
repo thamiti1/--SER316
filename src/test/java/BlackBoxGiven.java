@@ -54,9 +54,15 @@ public class BlackBoxGiven {
 
     Cart cart2;
     double cart2Expected;
+    
+    Cart cart2B;
+    double cart2BExpected;
 
     Cart cart3;
     double cart3Expected;
+    
+    Cart cart4;
+    double cart4Expected;
     
     @org.junit.Before
     public void setUp() throws Exception {
@@ -89,7 +95,20 @@ public class BlackBoxGiven {
             cart2.addItem(new FrozenFood());
         }    
 
-        cart2Expected = 35.64;
+        cart2Expected = 24.84;
+        
+        cart2B = createCart(100);
+        for(int i = 0; i < 3; i++) {
+            cart2B.addItem(new Dairy());
+        }
+        for(int i = 0; i < 3; i++) {
+            cart2B.addItem(new Produce());
+        }
+        for(int i = 0; i < 2; i++) {
+            cart2B.addItem(new FrozenFood());
+        }    
+
+        cart2BExpected = 25.92;
         
         
         cart3 = createCart(100);
@@ -108,6 +127,22 @@ public class BlackBoxGiven {
 
         cart3Expected = 35.64;
         
+        cart4 = createCart(10);
+        for (int i = 0; i < 2; i++) {
+            cart4.addItem(new Alcohol());
+       }
+        for(int i = 0; i < 3; i++) {
+            cart4.addItem(new Dairy());
+        }
+        for(int i = 0; i < 2; i++) {
+            cart4.addItem(new Produce());
+        }
+        for(int i = 0; i < 2; i++) {
+            cart4.addItem(new FrozenFood());
+        }    
+
+        cart4Expected = 35.64;
+        
     }
 
     // sample test
@@ -125,6 +160,13 @@ public class BlackBoxGiven {
         assertEquals(cart2Expected, amount, .01);
     }
     
+ // Tests whether discount on produce is applied    
+    @Test
+    public void calcCostCart2B() throws UnderAgeException {
+        double amount = cart2B.calcCost();
+        assertEquals(cart2BExpected, amount, .01);
+    }
+    
  // Tests whether or not the discount for alcohol and frozen food is applied
  // Fails Case 3 value of 42.12 is not discounted  
     @Test
@@ -132,4 +174,12 @@ public class BlackBoxGiven {
         double amount = cart3.calcCost();
         assertEquals(cart3Expected, amount, .01);
     }
+    
+ // Tests whether someone under age can buy alcohol
+       @Test
+       public void calcCostCart4() throws UnderAgeException {
+           double amount = cart4.calcCost();
+           assertEquals(cart4Expected, amount, .01);
+       }
+    
 }
