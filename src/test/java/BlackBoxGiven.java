@@ -64,6 +64,12 @@ public class BlackBoxGiven {
     Cart cart4;
     double cart4Expected;
     
+    Cart cart5;
+    double cart5Expected;
+    
+    Cart cart6;
+    double cart6Expected;
+    
     @org.junit.Before
     public void setUp() throws Exception {
 
@@ -143,6 +149,22 @@ public class BlackBoxGiven {
 
         cart4Expected = 35.64;
         
+        cart5 = createCart(21);
+        for (int i = 0; i < 2; i++) {
+            cart5.addItem(new Alcohol());
+       }
+        for(int i = 0; i < 2; i++) {
+            cart5.addItem(new Dairy());
+        }    
+
+        cart5Expected = 23.76;
+        
+        cart6 = createCart(4033);
+        for(int i = 0; i < 2; i++) {
+            cart6.addItem(new Produce());
+        }
+        cart6Expected = 4.32;
+        
     }
 
     // sample test
@@ -168,7 +190,7 @@ public class BlackBoxGiven {
     }
     
  // Tests whether or not the discount for alcohol and frozen food is applied
- // Fails Case 3 value of 42.12 is not discounted  
+ // Fails Case 3 
     @Test
     public void calcCostCart3() throws UnderAgeException {
         double amount = cart3.calcCost();
@@ -181,5 +203,18 @@ public class BlackBoxGiven {
            double amount = cart4.calcCost();
            assertEquals(cart4Expected, amount, .01);
        }
+   
+ // Tests whether someone exactly 21 can buy alcohol
+       @Test
+       public void calcCostCart5() throws UnderAgeException {
+           double amount = cart5.calcCost();
+           assertEquals(cart5Expected, amount, .01);
+       }       
     
+ // Testing small value that pass class 0 
+       @Test
+       public void calcCostCart6() throws UnderAgeException {
+           double amount = cart6.calcCost();
+           assertEquals(cart6Expected, amount, .01);
+       }  
 }
