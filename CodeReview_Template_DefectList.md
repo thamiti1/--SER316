@@ -2,23 +2,4 @@
 
 Reviewer: 			GH Repo:
 
-
-
-- |ID#|  |Location(File and Line #)|		|Problem Description|			  Problem
--										|Category|      |Severity|
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--										
+|-ID#-| |----Location----| |----------------Problem Description----------------|  ||Problem: |Category| |Severity||
