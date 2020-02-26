@@ -115,6 +115,11 @@ public class Cart {
         return false;
     }
 
+	/**  Method: Cart 
+     * Inputs:  age
+     * Returns: userAge, cart 
+     * Description: References age of person and products in Cart.    
+    */
     public Cart(int age) {
         userAge = age;
         cart = new ArrayList<Product>();
