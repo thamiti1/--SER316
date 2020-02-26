@@ -102,7 +102,7 @@ public class Cart {
       cart.add(np);
     }
 
-    public boolean RemoveItem(Product productToRemove)
+    public boolean removeItem(Product productToRemove)
     {
     		boolean test = false;
         for (int i = 0; i < cart.size(); i++) {
