@@ -28,7 +28,18 @@ public class Cart {
      * @throws UnderAgeException
      */
     public double calcCost() throws UnderAgeException {
-        return 0; //implement me, will be important for assignment 4 (nothing to do here for assignment 3)
+    	double cost = 0.0;
+    	double tax = 0.0;
+    	double totalCost = 0.0;
+    	
+    	for(int i = 0; i < cart.size(); i++) {
+    		cost += cart.get(i).getCost(); 
+    		    		
+    	}
+    	tax = getTax(cost, "AZ");
+    	totalCost = tax + cost;
+    	
+        return totalCost; 
     }
 
     // calculates how much was saved in the current shopping cart based on the deals, returns the saved amount
@@ -94,7 +105,7 @@ public class Cart {
                 break;
             default:
                 return totalBT;
-        }
+        } 
         return newTotal;
     }
 
