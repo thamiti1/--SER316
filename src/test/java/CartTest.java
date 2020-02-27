@@ -15,7 +15,7 @@ import main.java.Produce;
 import main.java.Product;
 import main.java.UnderAgeException;
 
-public class CartTest2 {
+public class CartTest {
 
 	Cart cart0;	
 	

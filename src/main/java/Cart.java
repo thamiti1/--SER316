@@ -79,8 +79,8 @@ public class Cart {
 			/**SER 316 start
 			*	else if (cart.get(i).getClass().toString() == FrozenFood.class.toString())
             *    dairyCounter++;
-			*/ 
-			//code was redundant and dairy is incorrectly incremented, doesn't need to in this case
+			* SER 316 end 
+			*/   //code was redundant and dairy is incorrectly incremented, doesn't need to in this case
 			
             if (alcoholCounter >= 1 && frozenFoodCounter >= 1) {
                  costAfterSavings = costAfterSavings + 3;
