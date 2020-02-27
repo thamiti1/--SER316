@@ -58,26 +58,30 @@ public class Cart {
             subTotal += cart.get(i).getCost();
             costAfterSavings =costAfterSavings+cart.get(i).getCost();
 
-            if (cart.get(i).getClass().toString() == Produce.class.toString()) {
-                produce_counter++;
+            if (cart.get(i).getClass().toString().equals (Produce.class.toString())) {  //SER316
+                produce_counter++;				//.equals so it worked properly for coverage
 
                 if (produce_counter >= 3) {
                     costAfterSavings -= 1;
                     produce_counter = 0;
-                }
+                } 
             }
-            else if (cart.get(i).getClass().toString()==Alcohol.class.toString()) {
-                alcoholCounter++;
+            else if (cart.get(i).getClass().toString().equals (Alcohol.class.toString())) {  //SER316
+                alcoholCounter++;					 //.equals so it worked properly for coverage
                 if (userAge < 21) {
                     throw new UnderAgeException("The User is not of age to purchase alcohol!");
                 }
             }
-            else if (cart.get(i).getClass().toString() == FrozenFood.class.toString()) {
-                frozenFoodCounter++;
+            
+            else if (cart.get(i).getClass().toString().equals (FrozenFood.class.toString())) { //SER 316
+                frozenFoodCounter++;				//.equals so it worked for code coverage
             }
-            else if (cart.get(i).getClass().toString() == FrozenFood.class.toString())
-                dairyCounter++;
-
+			/**SER 316 start
+			*	else if (cart.get(i).getClass().toString() == FrozenFood.class.toString())
+            *    dairyCounter++;
+			*/ 
+			//code was redundant and dairy is incorrectly incremented, doesn't need to in this case
+			
             if (alcoholCounter >= 1 && frozenFoodCounter >= 1) {
                  costAfterSavings = costAfterSavings + 3;
                  alcoholCounter--;
