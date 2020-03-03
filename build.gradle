@@ -21,6 +21,17 @@ dependencies {
     compile files('cls/')
 }
 
+jar {
+    sourceSets {
+        test {
+            java {
+                exclude '**/BlackBoxGiven.java'
+            }
+        }
+    }
+}
+
+
 ///////////////////////////////////////////////////////////////////////
 // Configure Checkstyle
 /////////////////////////////////////////////////////////////////////
