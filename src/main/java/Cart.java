@@ -32,9 +32,35 @@ public class Cart {
     	double tax = 0.0;
     	double totalCost = 0.0;
     	
+    	int a = 0; //alcohol
+    	int f = 0; //frozen food
+    	int p = 0; //produce
+    	
     	for(int i = 0; i < cart.size(); i++) {
-    		cost += cart.get(i).getCost(); 
-    		    		
+    		if(cart.get(i).getClass() == Alcohol.class) {
+    			a++;
+    		}
+    		
+    		else if(cart.get(i).getClass() == FrozenFood.class) {
+    			f++;
+    		}
+    		
+    		if(a >= 1 && f >= 1) {
+    			cost -= 3;
+    			a--;
+    			f--;
+    		}
+    		
+    		if(cart.get(i).getClass() == Produce.class) {
+    			p++;
+    			
+    			if(p >= 3) {
+        			cost -=1;
+        			p = 0;
+        		}
+    		}
+    		
+    		cost += cart.get(i).getCost();    		
     	}
     	tax = getTax(cost, "AZ");
     	totalCost = tax + cost;
